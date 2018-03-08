@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+</head>
+<body>
+    <h3>Registration Form</h3>
+
+    <div>
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            {% for message in messages %}
+            <p class="error">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% with sucesses = get_flashed_messages(category_filter=["sucess"]) %}
+        {% if sucesses %}
+            {% for msg in sucesses %}
+            <p class="sucess">{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/" method="POST">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." autofocus>
+        
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" name="email" placeholder="email@email.com">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+
+            <label for="password_confirm">Confirm Password:</label>
+            <input type="password" id="password_confirm" name="password_confirm">
+
+            <label for="birthdate">Birth Date:</label>
+            <input type="date" name="birthdate" id="birthdate">
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    
+</body>
+</html>
